@@ -6,9 +6,7 @@ var express = require('express'),
         noProfile: true
     }),
     bodyparser = require('body-parser'),
-    path = require('path'),
-    myData = require('./myData.json');
-//twilio = require('twilio');
+    path = require('path');
 
 app.use(bodyparser.urlencoded({ extended: true }));
 //app.use(express.static('public'))
