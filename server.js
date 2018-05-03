@@ -48,6 +48,9 @@ app.post('/SetPassword', function (request, response) {
     }, {
         name: 'newPassword',
         value: request.body.newPassword
+    },{
+        name: 'uPhoneNumber',
+        value: request.body.uPhoneNumber 
     } ])
     ps.invoke().then(output => {
         response.send(output)

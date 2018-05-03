@@ -1,23 +1,23 @@
 param (
     $LoginID,
 
-    $userPhoneNumber,
-    
-    $newPassword,
+    $uPhoneNumber,
+
+    $newPassword
 )
 
 try {
     Import-Module ActiveDirectory
     Set-ADAccountPassword -Identity $LoginID -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $newPassword -Force)
     Set-ADUser -Identity $LoginID -ChangePasswordAtLogon
-    Start-Sleep -Seconds 5
+    #Start-Sleep -Seconds 5
     $sid = ""
     $token = ""
     $number = "FromNumber"
 
     # Twilio API endpoint and POST params
     $url = "https://api.twilio.com/2010-04-01/Accounts/$sid/Messages.json"
-    $params = @{ To = $userPhoneNumber; From = $number; Body = "Your new AD Password in $($newPassword)" }
+    $params = @{ To = $uPhoneNumber; From = $number; Body = "Your new AD Password in $($newPassword)" }
 
     # Create a credential object for HTTP basic auth
     $p = $token | ConvertTo-SecureString -asPlainText -Force
