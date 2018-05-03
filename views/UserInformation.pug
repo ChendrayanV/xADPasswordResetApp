@@ -1,0 +1,50 @@
+doctype html
+style.
+    input[type=text],
+    select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+    input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+    input[type=submit]:hover {
+    background-color: #45a049;
+    }
+    div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    }
+h3 Confirm User Information for Validation
+div
+    form(action='/DoAction' method="post")
+        
+        label(for='loginID') sAMAccountName
+        input#loginID(type='text', name='LoginID', readonly=true , value=sAMAccountName)
+        
+        label(for='fname') First Name
+        input#fname(type='text', name='firstname', readonly=true , value=FirstName)
+        
+        label(for='lname') Last Name
+        input#lname(type='text', name='lastname', readonly=true , value=LastName)
+        
+        label(for='mail') Email
+        input#lname(type='text', name='email', readonly=true , value=Email)
+
+        label(for='npassword') New Password
+        input#lname(type='text', name='password', readonly=true , value=NewPassword)
+
+        input(type='submit', value='Next')
