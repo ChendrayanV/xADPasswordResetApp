@@ -1,16 +1,16 @@
 param (
     $LoginID,
 
+    $userPhoneNumber,
+    
     $newPassword,
-
-    $userPhoneNumber
 )
 
 try {
     Import-Module ActiveDirectory
     Set-ADAccountPassword -Identity $LoginID -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $newPassword -Force)
     Set-ADUser -Identity $LoginID -ChangePasswordAtLogon
-    #Start-Sleep -Seconds 5
+    Start-Sleep -Seconds 5
     $sid = ""
     $token = ""
     $number = "FromNumber"
