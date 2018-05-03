@@ -30,7 +30,7 @@ style.
     }
 h3 Confirm User Information for Validation
 div
-    form(action='/DoAction' method="post")
+    form(action='/SetPassword' method="post")
         
         label(for='loginID') sAMAccountName
         input#loginID(type='text', name='LoginID', readonly=true , value=sAMAccountName)
@@ -45,6 +45,9 @@ div
         input#lname(type='text', name='email', readonly=true , value=Email)
 
         label(for='npassword') New Password
-        input#lname(type='text', name='password', readonly=true , value=NewPassword)
+        input#lname(type='text', name='newPassword', readonly=true , value=NewPassword)
+
+        label(for='uPhoneNumber') User PhoneNumber
+        input#lname(type='text', name='userPhoneNumber', placeholder="User Mobile Number")
 
         input(type='submit', value='Next')

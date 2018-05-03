@@ -8,7 +8,7 @@ var express = require('express'),
     bodyparser = require('body-parser'),
     path = require('path'),
     myData = require('./myData.json');
-    //twilio = require('twilio');
+//twilio = require('twilio');
 
 app.use(bodyparser.urlencoded({ extended: true }));
 //app.use(express.static('public'))
@@ -40,8 +40,18 @@ app.post("/UserInformation", function (request, response) {
     })
 });
 
-app.post('/DoAction', function (request, response) {
-    response.send("<h1>Thanks</h1>");
+app.post('/SetPassword', function (request, response) {
+    //response.send("<h1>Thanks</h1>");
+    ps.addCommand("./scripts/ResetPassword.ps1", [ {
+        name: 'LoginID',
+        value: request.body.LoginID
+    }, {
+        name: 'newPassword',
+        value: request.body.newPassword
+    } ])
+    ps.invoke().then(output => {
+        response.send(output)
+    })
 })
 
 app.listen(3000)
