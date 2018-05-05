@@ -12,7 +12,7 @@ try {
     }
     $adsi = New-Object adsisearcher
     $adsi.Filter = "(&(ObjectCategory=User)(samaccountname=$sAMAccountName))"
-    $PropsToLoad = @('givenname' , 'sn' , 'mail' , 'cn')
+    $PropsToLoad = @('givenname' , 'sn' , 'mail' , 'cn' , 'mobile')
     $adsi.PropertiesToLoad.AddRange($PropsToLoad)
     if ($adsi.FindOne()) {
         $UserProperties = $adsi.FindOne().Properties 
@@ -21,6 +21,7 @@ try {
             FirstName      = $UserProperties['givenname'] -as [string]
             LastName       = $UserProperties['sn'] -as [string]
             Email          = $UserProperties['mail'] -as [string]
+            Mobile         = $UserProperties['mbile'] -as [string]
             NewPassword    = GetRandomPassword
         } | ConvertTo-Json -Compress
     }
@@ -30,6 +31,7 @@ try {
             FirstName      = "No Data"
             LastName       = "No Data"
             Email          = "No Data"
+            Mobile         = "No Data"
             NewPassword    = "No Data"
         } | ConvertTo-Json -Compress
     }
