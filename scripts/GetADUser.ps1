@@ -21,7 +21,7 @@ try {
             FirstName      = $UserProperties['givenname'] -as [string]
             LastName       = $UserProperties['sn'] -as [string]
             Email          = $UserProperties['mail'] -as [string]
-            Mobile         = $UserProperties['mbile'] -as [string]
+            Mobile         = $UserProperties['mobile'] -as [string]
             NewPassword    = GetRandomPassword
         } | ConvertTo-Json -Compress
     }
