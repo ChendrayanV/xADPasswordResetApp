@@ -10,7 +10,7 @@ param (
 try {
     Import-Module ActiveDirectory
     Set-ADAccountPassword -Identity $LoginID -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $newPassword -Force)
-    Set-ADUser -Identity $LoginID -ChangePasswordAtLogon $true
+    Set-ADUser -Identity $LoginID -ChangePasswordAtLogon:$true
     #Start-Sleep -Seconds 5
     $sid = ""
     $token = ""
